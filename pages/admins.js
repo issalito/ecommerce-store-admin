@@ -89,7 +89,7 @@ function Admins({ swal }) {
                 <td>
                   <button
                     onClick={() => deleteAdmin(admin)}
-                    className="btn-primary"
+                    className="btn-red"
                   >
                     Delete
                   </button>

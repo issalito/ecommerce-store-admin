@@ -122,8 +122,8 @@ export default function ProductForm({
       </select>
       {propertiesToFill.length > 0 &&
         propertiesToFill.map((p) => (
-          <div key={p.id} className="flex gap-1">
-            <div>{p.name}</div>
+          <div key={p.id} className="">
+            <label>{p.name[0].toUpperCase() + p.name.substring(1)}</label>
             <select
               value={productProperties[p.name]}
               onChange={(ev) => setProductProp(p.name, ev.target.value)}
@@ -146,7 +146,10 @@ export default function ProductForm({
         >
           {!!images?.length &&
             images.map((link) => (
-              <div className="h-24" key={link}>
+              <div
+                className="h-24 p-3 border border-gray-200 shadow-sm rounded-sm"
+                key={link}
+              >
                 <img src={link} className="rounded-lg" alt="" />
                 {/* <Image
                   src={link}
@@ -164,9 +167,9 @@ export default function ProductForm({
           </div>
         )}
         <label
-          className="w-32 h-32 flex flex-col cursor-pointer
+          className="w-32 h-24 flex flex-col cursor-pointer
         text-center items-center justify-center
-        text-md gap-1 text-gray-500 rounded-lg bg-gray-300"
+        text-md gap-1 text-gray-600 rounded-sm bg-white shadow-md border-gray-300"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -182,7 +185,7 @@ export default function ProductForm({
               d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25h-.75m0-3l-3-3m0 0l-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25h-7.5a2.25 2.25 0 01-2.25-2.25v-.75"
             />
           </svg>
-          <div>upload</div>
+          <div>Add image</div>
           <input type="file" onChange={uploadImages} className="hidden" />
         </label>
       </div>
