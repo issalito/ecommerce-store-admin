@@ -3,8 +3,21 @@ import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { getServerSession } from "next-auth";
+import { mongooseConnect } from "@/lib/mongoose";
+import { Admin } from "@/models/Admin";
 
-const adminEmails = ["issamhando777@gmail.com"];
+//const adminEmails = ["issamhando777@gmail.com"];
+
+// await mongooseConnect();
+// const admins = await Admin.find();
+// const emails = admins.map((admin) => admin.adminEmails);
+// console.log(emails);
+//return admins.adminEmail;
+await mongooseConnect();
+const admins = await Admin.find();
+// Use the map function to extract "adminEmail" values into the "emails" array
+const adminEmails = admins.map((admin) => admin.adminEmail);
+//console.log(emails); // This will print an array of "adminEmail" values
 
 export const authOptions = {
   providers: [
